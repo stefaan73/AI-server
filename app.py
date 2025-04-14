@@ -35,4 +35,4 @@ def upload_image():
     return send_file(result_path, mimetype='image/png')
 
 if __name__ == '__main__':
-app.run(host='0.0.0.0', port=10000)
+    app.run(host='0.0.0.0', port=10000)
