@@ -6,7 +6,7 @@ from PIL import Image
 import uuid
 
 app = Flask(__name__)
-CORS(app) # Hiermee mag je site toegang krijgen tot deze server
+CORS(app)
 
 UPLOAD_FOLDER = 'uploads'
 RESULT_FOLDER = 'results'
@@ -24,12 +24,10 @@ filename = secure_filename(image.filename)
 file_path = os.path.join(UPLOAD_FOLDER, filename)
 image.save(file_path)
 
-# Open de afbeelding en voeg de gekozen kleur toe als transparante overlay
 img = Image.open(file_path).convert("RGBA")
 overlay = Image.new("RGBA", img.size, color + "88") # 88 = transparantie
 combined = Image.alpha_composite(img, overlay)
 
-# Sla het resultaat op
 result_filename = f"result_{uuid.uuid4().hex}.png"
 result_path = os.path.join(RESULT_FOLDER, result_filename)
 combined.save(result_path)
