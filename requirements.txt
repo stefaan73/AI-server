@@ -3,4 +3,3 @@ pillow
 flask-cors
 torch
 torchvision
-opencv-pyhton-headless
